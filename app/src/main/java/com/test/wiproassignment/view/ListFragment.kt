@@ -12,8 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.test.wiproassignment.R
 import com.test.wiproassignment.base.view.BaseFragment
 import com.test.wiproassignment.databinding.FragmentListBinding
-import com.test.wiproassignment.model.Item
-import com.test.wiproassignment.model.List
+import com.test.wiproassignment.utils.SCREEN_ROTATION
 import com.test.wiproassignment.viewmodel.ListFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
@@ -33,6 +32,14 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
 
     override val viewModel: ListFragmentViewModel
         get() = mListViewModel
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (!rotation!!) {
+            mListViewModel.fetchData()
+        }
+
+    }
 
 
     override fun initializeUI() {
@@ -56,8 +63,12 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
 
         //Displaying toast initially when network not available
         mListViewModel.isNetwork.observe(this, Observer {
-            if (!it){
-                Toast.makeText(context,getString(R.string.network_not_available),Toast.LENGTH_SHORT).show()
+            if (!it) {
+                Toast.makeText(
+                    context,
+                    getString(R.string.network_not_available),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
 

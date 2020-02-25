@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.test.wiproassignment.base.viewmodel.BaseViewModel
+import com.test.wiproassignment.utils.SCREEN_ROTATION
 
 
 /**
@@ -19,6 +20,7 @@ import com.test.wiproassignment.base.viewmodel.BaseViewModel
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment() {
 
 
+    var rotation: Boolean? = false
     private lateinit var mRootView: View
     private lateinit var viewDataBinding: T
     private var mViewModel: V? = null
@@ -70,6 +72,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment()
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        rotation = (activity as BaseActivity<*, *>).rotation
         super.onActivityCreated(savedInstanceState)
         initializeUI()
     }

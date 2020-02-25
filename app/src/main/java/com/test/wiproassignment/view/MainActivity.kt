@@ -10,6 +10,7 @@ import com.test.wiproassignment.viewmodel.MainActivityViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() {
 
+
     private val mMainActivityViewModel: MainActivityViewModel by lazy {
         ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
     }
@@ -25,7 +26,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
 
     override fun init() {
         setActionBar(findViewById(R.id.toolbar))
-        addFragment(ListFragment.newInstance(), ListFragment.fragmentTag())
+        if (!rotation!!)
+            addFragment(ListFragment.newInstance(), ListFragment.fragmentTag())
     }
 
 

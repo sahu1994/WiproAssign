@@ -1,19 +1,21 @@
 package com.test.wiproassignment.base.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.ListFragment
-import com.test.wiproassignment.R
 import com.test.wiproassignment.base.viewmodel.BaseViewModel
 import com.test.wiproassignment.base.viewmodel.ViewModelProviderFactory
+import com.test.wiproassignment.utils.SCREEN_ROTATION
 
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : FragmentActivity() {
 
+    var rotation: Boolean? = false
     private var viewDataBinding: T? = null
     private var mViewModel: V? = null
 
@@ -41,20 +43,28 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : FragmentAc
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme)
+        if (savedInstanceState != null) {
+            rotation = savedInstanceState.getBoolean(SCREEN_ROTATION)
+        }
+        setTheme(com.test.wiproassignment.R.style.AppTheme)
         super.onCreate(savedInstanceState)
         mViewModelProviderFactory = ViewModelProviderFactory(this)
         performDataBinding()
         init()
+
+
     }
 
-    public override fun onResume() {
-        super.onResume()
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean(SCREEN_ROTATION, true)
+        rotation = true
+        Log.d("Screen rotation", "onSaveInstanceState")
+        super.onSaveInstanceState(outState)
     }
 
-    public override fun onPause() {
-        super.onPause()
-
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        Log.d("Screen rotation", "onRestoreInstanceState")
+        super.onRestoreInstanceState(savedInstanceState)
     }
 
 
@@ -70,7 +80,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : FragmentAc
             supportFragmentManager
                 .beginTransaction()
                 .disallowAddToBackStack()
-                .add(R.id.container, fragment, tag)
+                .add(com.test.wiproassignment.R.id.container, fragment, tag)
                 .commit()
         }
     }
