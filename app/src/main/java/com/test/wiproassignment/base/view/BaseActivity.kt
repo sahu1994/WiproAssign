@@ -1,7 +1,6 @@
 package com.test.wiproassignment.base.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -12,10 +11,12 @@ import com.test.wiproassignment.base.viewmodel.BaseViewModel
 import com.test.wiproassignment.base.viewmodel.ViewModelProviderFactory
 import com.test.wiproassignment.utils.SCREEN_ROTATION
 
-
+/**
+ * Created by Girish Sahu on 2/26/2020.
+ */
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : FragmentActivity() {
 
-    var rotation: Boolean? = false
+    var mRotationStatus: Boolean? = false
     private var viewDataBinding: T? = null
     private var mViewModel: V? = null
 
@@ -44,7 +45,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : FragmentAc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {
-            rotation = savedInstanceState.getBoolean(SCREEN_ROTATION)
+            mRotationStatus = savedInstanceState.getBoolean(SCREEN_ROTATION)
         }
         setTheme(com.test.wiproassignment.R.style.AppTheme)
         super.onCreate(savedInstanceState)
@@ -57,14 +58,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : FragmentAc
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putBoolean(SCREEN_ROTATION, true)
-        rotation = true
-        Log.d("Screen rotation", "onSaveInstanceState")
         super.onSaveInstanceState(outState)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-        Log.d("Screen rotation", "onRestoreInstanceState")
-        super.onRestoreInstanceState(savedInstanceState)
     }
 
 

@@ -12,7 +12,9 @@ import com.test.wiproassignment.databinding.ItemInfoBinding
 import com.test.wiproassignment.model.Item
 import com.test.wiproassignment.viewmodel.ListFragmentViewModel
 
-
+/**
+ * Created by Girish Sahu on 2/26/2020.
+ */
 class ListItemsAdapter : BaseAdapter() {
 
     private var mList = mutableListOf<Item>()

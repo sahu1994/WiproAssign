@@ -9,9 +9,8 @@ import com.test.wiproassignment.viewmodel.ListFragmentViewModel
 
 
 /**
- * Created by Girish Sahu on 1/13/19.
+ * Created by Girish Sahu on 2/26/2020.
  */
-
 class ViewModelProviderFactory(private val mContext: Context) :
     ViewModelProvider.NewInstanceFactory() {
 

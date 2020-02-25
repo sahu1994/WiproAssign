@@ -9,6 +9,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * Created by Girish Sahu on 2/26/2020.
+ */
 class ListFragmentViewModel : BaseViewModel() {
 
     var listData = MutableLiveData<List>()

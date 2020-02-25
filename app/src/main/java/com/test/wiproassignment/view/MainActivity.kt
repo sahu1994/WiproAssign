@@ -8,6 +8,10 @@ import com.test.wiproassignment.base.view.BaseActivity
 import com.test.wiproassignment.databinding.ActivityMainBinding
 import com.test.wiproassignment.viewmodel.MainActivityViewModel
 
+
+/**
+ * Created by Girish Sahu on 2/26/2020.
+ */
 class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() {
 
 
@@ -26,7 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
 
     override fun init() {
         setActionBar(findViewById(R.id.toolbar))
-        if (!rotation!!)
+        if (!mRotationStatus!!)
             addFragment(ListFragment.newInstance(), ListFragment.fragmentTag())
     }
 

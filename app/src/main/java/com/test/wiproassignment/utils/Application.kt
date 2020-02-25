@@ -7,6 +7,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+/**
+ * Created by Girish Sahu on 2/26/2020.
+ */
 class ListApp : Application() {
 
     override fun onCreate() {
