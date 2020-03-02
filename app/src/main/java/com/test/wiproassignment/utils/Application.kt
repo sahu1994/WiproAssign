@@ -24,12 +24,14 @@ class ListApp : Application() {
 
 
     fun provideRetrofitInterface(): RestAPI {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(getClient())
-            .build()
-        return retrofit.create(RestAPI::class.java)
+        synchronized(this) {
+            val retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(getClient())
+                .build()
+            return retrofit.create(RestAPI::class.java)
+        }
     }
 
     private fun getClient(): OkHttpClient {
