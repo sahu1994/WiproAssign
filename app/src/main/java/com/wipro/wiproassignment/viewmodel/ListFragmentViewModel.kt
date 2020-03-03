@@ -1,11 +1,11 @@
-package com.test.wiproassignment.viewmodel
+package com.wipro.wiproassignment.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.test.wiproassignment.base.viewmodel.BaseViewModel
-import com.test.wiproassignment.model.List
-import com.test.wiproassignment.repositories.ListRepository
-import com.test.wiproassignment.utils.ListApp
-import com.test.wiproassignment.utils.isNetworkAvailable
+import com.wipro.wiproassignment.base.viewmodel.BaseViewModel
+import com.wipro.wiproassignment.model.List
+import com.wipro.wiproassignment.repositories.ListRepository
+import com.wipro.wiproassignment.utils.ListApp
+import com.wipro.wiproassignment.utils.isNetworkAvailable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +28,10 @@ class ListFragmentViewModel : BaseViewModel() {
         listData = ListRepository.instance.fetchData()
         isLoaded = ListRepository.instance.isLoaded
         isNetwork = ListRepository.instance.isNetwork
+    }
+
+    fun checkNetwork() {
+        isNetwork.value = isNetworkAvailable(ListApp.instance)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.test.wiproassignment.base.view
+package com.wipro.wiproassignment.base.view
 
 
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.test.wiproassignment.base.viewmodel.BaseViewModel
+import com.wipro.wiproassignment.base.viewmodel.BaseViewModel
 
 
 /**

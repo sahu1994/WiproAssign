@@ -1,4 +1,4 @@
-package com.test.wiproassignment.base.viewmodel
+package com.wipro.wiproassignment.base.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

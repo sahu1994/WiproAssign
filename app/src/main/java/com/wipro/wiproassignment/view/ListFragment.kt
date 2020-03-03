@@ -1,19 +1,24 @@
 @file:Suppress("DEPRECATION")
 
-package com.test.wiproassignment.view
+package com.wipro.wiproassignment.view
 
 
-
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.test.wiproassignment.R
-import com.test.wiproassignment.base.view.BaseFragment
 import com.test.wiproassignment.databinding.FragmentListBinding
-import com.test.wiproassignment.viewmodel.ListFragmentViewModel
+import com.wipro.wiproassignment.base.view.BaseFragment
+import com.wipro.wiproassignment.viewmodel.ListFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
+
 
 /**
  * Created by Girish Sahu on 2/26/2020.
@@ -77,7 +82,44 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
             swipeRefresh.isRefreshing = false
         }
 
+        registerNetworkBroadcast()
 
+
+    }
+
+    private fun registerNetworkBroadcast() {
+        context?.registerReceiver(
+            NetworkReceiver(),
+            IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        )
+    }
+
+    private fun unregisterNetworkChanges() {
+        try {
+            context?.unregisterReceiver(NetworkReceiver())
+        } catch (e: IllegalArgumentException) {
+            e.printStackTrace()
+        }
+
+    }
+
+
+
+    inner class NetworkReceiver : BroadcastReceiver() {
+
+        override fun onReceive(context: Context, intent: Intent) {
+            if(intent.action.equals(ConnectivityManager.CONNECTIVITY_ACTION,true)){
+                mListViewModel.checkNetwork()
+            }
+        }
+    }
+
+
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterNetworkChanges()
     }
 
 
@@ -93,3 +135,6 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
 
 
 }
+
+
+

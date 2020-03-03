@@ -1,11 +1,11 @@
-package com.test.wiproassignment.base.viewmodel
+package com.wipro.wiproassignment.base.viewmodel
 
 import android.content.Context
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-import com.test.wiproassignment.viewmodel.ListFragmentViewModel
+import com.wipro.wiproassignment.viewmodel.ListFragmentViewModel
 
 
 /**

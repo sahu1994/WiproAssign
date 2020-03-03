@@ -1,4 +1,4 @@
-package com.test.wiproassignment.model
+package com.wipro.wiproassignment.model
 
 /**
  * Created by Girish Sahu on 2/26/2020.

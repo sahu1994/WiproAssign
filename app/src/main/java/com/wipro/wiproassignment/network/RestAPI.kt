@@ -1,6 +1,6 @@
-package com.test.wiproassignment.network
+package com.wipro.wiproassignment.network
 
-import com.test.wiproassignment.model.List
+import com.wipro.wiproassignment.model.List
 import retrofit2.Call
 import retrofit2.http.GET
 

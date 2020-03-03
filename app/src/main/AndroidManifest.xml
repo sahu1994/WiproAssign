@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".utils.ListApp"
+        android:name="com.wipro.wiproassignment.utils.ListApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".view.MainActivity"
+            android:name="com.wipro.wiproassignment.view.MainActivity"
             android:configChanges="orientation"
            >
             <intent-filter>

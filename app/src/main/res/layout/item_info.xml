@@ -6,7 +6,7 @@
 
         <variable
             name="model"
-            type="com.test.wiproassignment.model.Item" />
+            type="com.wipro.wiproassignment.model.Item" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,12 +16,14 @@
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_8dp"
             android:text="@{model.component1()}"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/color_light_blue"
             android:textSize="@dimen/dimen_24sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivItemPhoto"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,9 +43,10 @@
             android:id="@+id/ivItemPhoto"
             android:layout_width="@dimen/dimen_100dp"
             android:layout_height="@dimen/dimen_100dp"
+            android:contentDescription="@string/image_item"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

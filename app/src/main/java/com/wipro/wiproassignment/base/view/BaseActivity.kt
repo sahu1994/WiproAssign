@@ -1,4 +1,4 @@
-package com.test.wiproassignment.base.view
+package com.wipro.wiproassignment.base.view
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
@@ -7,9 +7,10 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.ListFragment
-import com.test.wiproassignment.base.viewmodel.BaseViewModel
-import com.test.wiproassignment.base.viewmodel.ViewModelProviderFactory
-import com.test.wiproassignment.utils.SCREEN_ROTATION
+import com.test.wiproassignment.R
+import com.wipro.wiproassignment.base.viewmodel.BaseViewModel
+import com.wipro.wiproassignment.base.viewmodel.ViewModelProviderFactory
+import com.wipro.wiproassignment.utils.SCREEN_ROTATION
 
 /**
  * Created by Girish Sahu on 2/26/2020.
@@ -47,7 +48,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : FragmentAc
         if (savedInstanceState != null) {
             mRotationStatus = savedInstanceState.getBoolean(SCREEN_ROTATION)
         }
-        setTheme(com.test.wiproassignment.R.style.AppTheme)
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         mViewModelProviderFactory = ViewModelProviderFactory(this)
         performDataBinding()
@@ -74,7 +75,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : FragmentAc
             supportFragmentManager
                 .beginTransaction()
                 .disallowAddToBackStack()
-                .add(com.test.wiproassignment.R.id.container, fragment, tag)
+                .add(R.id.container, fragment, tag)
                 .commit()
         }
     }

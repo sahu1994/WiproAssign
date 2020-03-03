@@ -1,7 +1,7 @@
-package com.test.wiproassignment.utils
+package com.wipro.wiproassignment.utils
 
 import android.app.Application
-import com.test.wiproassignment.network.RestAPI
+import com.wipro.wiproassignment.network.RestAPI
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

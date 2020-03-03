@@ -1,4 +1,4 @@
-package com.test.wiproassignment.utils
+package com.wipro.wiproassignment.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

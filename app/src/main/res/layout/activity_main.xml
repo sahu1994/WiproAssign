@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.test.wiproassignment.viewmodel.MainActivityViewModel" />
+            type="com.wipro.wiproassignment.viewmodel.MainActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

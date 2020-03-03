@@ -1,4 +1,4 @@
-package com.test.wiproassignment.view
+package com.wipro.wiproassignment.view
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,8 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.squareup.picasso.Picasso
 import com.test.wiproassignment.R
 import com.test.wiproassignment.databinding.ItemInfoBinding
-import com.test.wiproassignment.model.Item
-import com.test.wiproassignment.viewmodel.ListFragmentViewModel
+import com.wipro.wiproassignment.model.Item
 
 /**
  * Created by Girish Sahu on 2/26/2020.

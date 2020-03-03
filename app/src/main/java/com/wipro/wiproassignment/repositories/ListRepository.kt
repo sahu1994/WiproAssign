@@ -1,9 +1,9 @@
-package com.test.wiproassignment.repositories
+package com.wipro.wiproassignment.repositories
 
 import androidx.lifecycle.MutableLiveData
-import com.test.wiproassignment.model.List
-import com.test.wiproassignment.utils.ListApp
-import com.test.wiproassignment.utils.isNetworkAvailable
+import com.wipro.wiproassignment.model.List
+import com.wipro.wiproassignment.utils.ListApp
+import com.wipro.wiproassignment.utils.isNetworkAvailable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
