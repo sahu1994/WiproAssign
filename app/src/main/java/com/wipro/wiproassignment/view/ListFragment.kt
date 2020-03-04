@@ -11,6 +11,7 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.wipro.wiproassignment.R
@@ -81,9 +82,12 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
             swipeRefresh.isRefreshing = false
         }
 
+
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         registerNetworkBroadcast()
-
-
     }
 
     private fun networkAvailabilityUpdate(isNetwork: Boolean) {
@@ -95,19 +99,21 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
 
     private fun registerNetworkBroadcast() {
         context?.registerReceiver(
-            NetworkReceiver(),
+            mBroadcastReceiver,
             IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         )
     }
 
     private fun unregisterNetworkChanges() {
         try {
-            context?.unregisterReceiver(NetworkReceiver())
+            context?.unregisterReceiver(mBroadcastReceiver)
         } catch (e: IllegalArgumentException) {
             e.printStackTrace()
         }
 
     }
+
+    private val mBroadcastReceiver: NetworkReceiver = NetworkReceiver()
 
 
     inner class NetworkReceiver : BroadcastReceiver() {
@@ -115,10 +121,6 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.action.equals(ConnectivityManager.CONNECTIVITY_ACTION, true)) {
                 mListViewModel.checkNetwork()
-
-                //Refreshing if internet available
-                if (isNetworkAvailable(context))
-                    mListViewModel.fetchData()
             }
         }
     }
@@ -142,6 +144,9 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
 
 
 }
+
+
+
 
 
 

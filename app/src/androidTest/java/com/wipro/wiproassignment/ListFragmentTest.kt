@@ -45,7 +45,7 @@ class ListFragmentTest {
 
     @Test
     fun checkNetworkAvailability() {
-        assert(isNetworkAvailable(listFragment.context?.applicationContext!!))
+        assert(isNetworkAvailable(rule.activity))
     }
 
 }
