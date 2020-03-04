@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.databinding.DataBindingUtil
 import com.squareup.picasso.Picasso
-import com.test.wiproassignment.R
-import com.test.wiproassignment.databinding.ItemInfoBinding
+import com.wipro.wiproassignment.R
+import com.wipro.wiproassignment.databinding.ItemInfoBinding
 import com.wipro.wiproassignment.model.Item
 
 /**

@@ -2,6 +2,7 @@ package com.wipro.wiproassignment.repositories
 
 import androidx.lifecycle.MutableLiveData
 import com.wipro.wiproassignment.model.List
+import com.wipro.wiproassignment.network.RestClient
 import com.wipro.wiproassignment.utils.ListApp
 import com.wipro.wiproassignment.utils.isNetworkAvailable
 import retrofit2.Call
@@ -30,7 +31,7 @@ class ListRepository private constructor() {
         isLoaded.value = false
         if (isNetworkAvailable(ListApp.instance)) {
             isNetwork.value = true
-            ListApp.instance.provideRetrofitInterface().getListItems()
+            RestClient.instance.provideRetrofitInterface().getListItems()
                 .enqueue(object : Callback<List> {
                     override fun onResponse(
                         call: Call<List>,

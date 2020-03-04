@@ -11,13 +11,14 @@ import com.wipro.wiproassignment.viewmodel.ListFragmentViewModel
 /**
  * Created by Girish Sahu on 2/26/2020.
  */
+@Suppress("UNCHECKED_CAST")
 class ViewModelProviderFactory(private val mContext: Context) :
     ViewModelProvider.NewInstanceFactory() {
 
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
-        if (modelClass.isAssignableFrom(ListFragmentViewModel::class.java!!)) {
+        if (modelClass.isAssignableFrom(ListFragmentViewModel::class.java)) {
 
             return ListFragmentViewModel() as T
 

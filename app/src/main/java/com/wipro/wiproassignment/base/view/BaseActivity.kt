@@ -7,7 +7,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.ListFragment
-import com.test.wiproassignment.R
+import com.wipro.wiproassignment.R
 import com.wipro.wiproassignment.base.viewmodel.BaseViewModel
 import com.wipro.wiproassignment.base.viewmodel.ViewModelProviderFactory
 import com.wipro.wiproassignment.utils.SCREEN_ROTATION

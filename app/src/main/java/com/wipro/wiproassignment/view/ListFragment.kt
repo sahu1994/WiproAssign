@@ -13,9 +13,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.test.wiproassignment.R
-import com.test.wiproassignment.databinding.FragmentListBinding
+import com.wipro.wiproassignment.R
 import com.wipro.wiproassignment.base.view.BaseFragment
+import com.wipro.wiproassignment.databinding.FragmentListBinding
+import com.wipro.wiproassignment.utils.isNetworkAvailable
 import com.wipro.wiproassignment.viewmodel.ListFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
@@ -58,10 +59,7 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
 
         //Checking data loaded status
         mListViewModel.isLoaded.observe(this, Observer {
-            if (it)
-                pbList.visibility = View.GONE
-            else
-                pbList.visibility = View.VISIBLE
+            networkAvailabilityUpdate(it)
         })
 
 
@@ -73,6 +71,7 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
                     getString(R.string.network_not_available),
                     Toast.LENGTH_SHORT
                 ).show()
+                pbList.visibility = View.GONE
             }
         })
 
@@ -85,6 +84,13 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
         registerNetworkBroadcast()
 
 
+    }
+
+    private fun networkAvailabilityUpdate(isNetwork: Boolean) {
+        if (isNetwork)
+            pbList.visibility = View.GONE
+        else
+            pbList.visibility = View.VISIBLE
     }
 
     private fun registerNetworkBroadcast() {
@@ -104,17 +110,18 @@ class ListFragment : BaseFragment<FragmentListBinding, ListFragmentViewModel>() 
     }
 
 
-
     inner class NetworkReceiver : BroadcastReceiver() {
 
         override fun onReceive(context: Context, intent: Intent) {
-            if(intent.action.equals(ConnectivityManager.CONNECTIVITY_ACTION,true)){
+            if (intent.action.equals(ConnectivityManager.CONNECTIVITY_ACTION, true)) {
                 mListViewModel.checkNetwork()
+
+                //Refreshing if internet available
+                if (isNetworkAvailable(context))
+                    mListViewModel.fetchData()
             }
         }
     }
-
-
 
 
     override fun onDestroy() {

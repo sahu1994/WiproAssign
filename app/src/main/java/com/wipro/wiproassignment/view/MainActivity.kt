@@ -3,9 +3,9 @@
 package com.wipro.wiproassignment.view
 
 import androidx.lifecycle.ViewModelProviders
-import com.test.wiproassignment.R
-import com.test.wiproassignment.databinding.ActivityMainBinding
+import com.wipro.wiproassignment.R
 import com.wipro.wiproassignment.base.view.BaseActivity
+import com.wipro.wiproassignment.databinding.ActivityMainBinding
 import com.wipro.wiproassignment.viewmodel.MainActivityViewModel
 
 

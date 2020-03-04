@@ -8,7 +8,7 @@ android {
 
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.test.wiproassignment"
+        applicationId "com.wipro.wiproassignment"
         minSdkVersion 25
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 25
